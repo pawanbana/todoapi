@@ -8,8 +8,7 @@ var Todo =mongoose.model('Todo',{
         trim : true
     },
     completed:{
-      type:Boolean,
-      default:false
+      type:Boolean
     },
     completedAt:{
        type:Number,
