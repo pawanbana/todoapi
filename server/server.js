@@ -36,7 +36,7 @@ app.get('/todos',(req,res)=>{
    },(e)=>{
       console.log("there might be an error");
       
-   })
+   });
    
 
 });
