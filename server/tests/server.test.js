@@ -1,13 +1,15 @@
 const expect=require('expect');
 const request=require('supertest');
-
+const {ObjectID}=require('mongodb');
 const {app}=require('./../server');
 
 const {Todo}=require('./../models/todo');
 
 const todos =[{
+	_id: new ObjectID(),
 	text:'first test todo'
-},{
+},{ 
+	_id: new ObjectID(),
 	text:'second test todo'
 }];
 
@@ -60,4 +62,22 @@ describe('GET/Todos',()=>{
        })
        .end(done);
 	});
+});
+
+
+describe('GET/Todos/:ID',()=>{
+    it('should get todo by id',(done)=>{
+      request(app)
+       .get(`/todos/${todos[0]._id.toHexString()}`)
+       .expect(200)
+       .expect((res)=>{
+       	expect(res.body.text).toBe(todos[0].text);
+        
+       })
+       .end(done);
+
+
+
+
+});
 });

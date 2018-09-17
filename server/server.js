@@ -10,6 +10,7 @@ var {Todo}=require("./models/todo.js");
 var {user}=require("./models/user.js");
 
 var app =express();
+const port =process.env.PORT||3000
 
 app.use(bodyparser.json());
 
@@ -64,8 +65,8 @@ app.get('/todos/:id',(req,res)=>{
 });
 
 
-app.listen(3000,()=>{
-	console.log("started on server port 3000");
+app.listen(port,()=>{
+	console.log("started up at",port);
 });
 
 
