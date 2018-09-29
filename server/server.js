@@ -13,6 +13,7 @@ var {mongoose}=require("./db/mongoose.js");
 var {Todo}=require("./models/todo.js");
 
 var {User}=require("./models/user.js");
+var{authenticate}=require('./middleware/authenticate');
 
 
 
@@ -164,6 +165,12 @@ app.use(bodyparser.json());
              	res.status(400).send(e);
              });
 
+           });
+
+         //Get route by authentication 
+
+           app.get('/users/me',authenticate,(req,res)=>{
+              res.send(req.user);   
            });
 
 
